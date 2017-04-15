@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03 Filters with vuejs</title>
+</head>
+<body>
+    
+    <div id="app">
+        <div>
+            <h1>{{ title | uppercase }}</h1>
+            <h2>{{ subtitle | lowecaser }}</h2>
+        </div>
+    </div>
+
+    <script src="http://unpkg.com/vue"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                title: 'Hello World',
+                subtitle: 'Example #3 - Filters'
+            },
+            filters: {
+                uppercase: function(str){
+                    return str.toUpperCase()
+                },
+                lowecaser: function(str){
+                    return str.toLowerCase()
+                }
+            }
+        });
+    </script>
+</body>
+</html>
