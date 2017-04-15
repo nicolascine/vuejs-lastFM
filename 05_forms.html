@@ -2,13 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>05 Forms with vuejs</title>
+    <title>05 Forms v-model with vuejs</title>
 </head>
 <body>
     
     <div id="app">
         <input type="text" name="name" v-model="name" placeholder="Enter your name">
         <p>Your name (uppercase) is: {{ name | uppercase }}</p>
+        <form @submit.prevent="submit">
+        <h3>Options</h3>
+            <label for="option1">Option 1</label>
+            <input v-model="options" type="checkbox" id="option1" value="option1"><br>
+            <label for="option2">Option 2</label>
+            <input v-model="options" type="checkbox" id="option2" value="option2"><br>
+            <label for="option3">Option 3</label>
+            <input v-model="options" type="checkbox" id="option3" value="option3"><br><br>
+            <button type="submit">Send options</button>
+        </form>
     </div>
 
     <script src="http://unpkg.com/vue"></script>
@@ -16,11 +26,17 @@
         let app = new Vue({
             el: '#app',
             data: {
-                name: ''
+                name: '',
+                options: []
             },
             filters: {
                 uppercase(str){
                     return str.toUpperCase()
+                }
+            },
+            methods: {
+                submit(){
+                    console.log(this.options)
                 }
             }
         });
