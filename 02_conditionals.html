@@ -7,9 +7,11 @@
 <body>
     
     <div id="app">
-        Hola {{ name }}
-        <br>
-        <a v-if="show" v-bind:href="url" target="_blank">Ir a {{ page }}</a>
+        <template v-if="show">
+            Hola {{ name }}
+            <br>
+            <a v-bind:href="url" target="_blank">Ir a {{ page }}</a>
+        </template>
     </div>
 
     <script src="http://unpkg.com/vue"></script>
