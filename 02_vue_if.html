@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>01 Hello world with vuejs</title>
+    <title>02 Hello world with vuejs</title>
 </head>
 <body>
     
     <div id="app">
         Hola {{ name }}
         <br>
-        <a v-bind:href="url" target="_blank">Ir a {{ page }}</a>
+        <a v-if="show" v-bind:href="url" target="_blank">Ir a {{ page }}</a>
     </div>
 
     <script src="http://unpkg.com/vue"></script>
@@ -19,7 +19,8 @@
             data: {
                 name: 'Rick',
                 url: 'https://google.com',
-                page: 'Google'
+                page: 'Google',
+                show: false
             }
         });
     </script>
