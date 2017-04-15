@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05 Forms with vuejs</title>
+</head>
+<body>
+    
+    <div id="app">
+        <input type="text" name="name" v-model="name" placeholder="Enter your name">
+        <p>Your name (uppercase) is: {{ name | uppercase }}</p>
+    </div>
+
+    <script src="http://unpkg.com/vue"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                name: ''
+            },
+            filters: {
+                uppercase(str){
+                    return str.toUpperCase()
+                }
+            }
+        });
+    </script>
+</body>
+</html>
