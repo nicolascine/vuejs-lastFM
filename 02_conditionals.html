@@ -7,11 +7,14 @@
 <body>
     
     <div id="app">
-        <template v-if="show">
-            Hola {{ name }}
+        <template v-if="showContent">
+            <h1>Hello {{ name }}</h1>
             <br>
             <a v-bind:href="url" target="_blank">Ir a {{ page }}</a>
         </template>
+        <div v-show="!showContent">
+            <h4>Conditional content</h4>
+        </div>
     </div>
 
     <script src="http://unpkg.com/vue"></script>
@@ -19,10 +22,10 @@
         let app = new Vue({
             el: '#app',
             data: {
-                name: 'Rick',
+                name: 'Rick Hunter',
                 url: 'https://google.com',
                 page: 'Google',
-                show: false
+                showContent: false
             }
         });
     </script>

@@ -7,7 +7,7 @@
 <body>
     
     <div id="app">
-        Hola {{ name }}
+        Hello {{ name }}
         <br>
         <a v-bind:href="url" target="_blank">Ir a {{ page }}</a>
     </div>
@@ -17,7 +17,7 @@
         let app = new Vue({
             el: '#app',
             data: {
-                name: 'Rick',
+                name: 'Rick Hunter',
                 url: 'https://google.com',
                 page: 'Google'
             }
