@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test 1 vuejs</title>
+</head>
+<body>
+    
+    <div id="app">
+        Hola {{ nombre }}
+    </div>
+
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                nombre: 'Rick'
+            }
+        });
+    </script>
+</body>
+</html>
