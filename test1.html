@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>test 1 vuejs</title>
+    <title>Hello world with vuejs</title>
 </head>
 <body>
     
     <div id="app">
         Hola {{ nombre }}
+        <br>
+        <a v-bind:href="url" target="_blank">Ir a {{ pagina }}</a>
     </div>
 
     <script src="http://unpkg.com/vue"></script>
@@ -15,7 +17,9 @@
         let app = new Vue({
             el: '#app',
             data: {
-                nombre: 'Rick'
+                nombre: 'Rick',
+                url: 'https://google.com',
+                pagina: 'Google'
             }
         });
     </script>
