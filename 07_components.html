@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07 Components with vuejs</title>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="submit">
+        <h3>Options</h3>
+            <template v-for="option in options">
+                <opt v-bind:option="option" v-bind:selected-options="selectedOptions"></opt>
+            </template>
+            <button type="submit">Send options</button>
+        </form>
+    </div>
+
+    <script src="http://unpkg.com/vue"></script>
+    <script type="text/javascript">
+
+        Vue.component('opt', {
+            props: [ 'option', 'selectedOptions'],
+            template: `
+                <div>
+                    <label v-bind:for="option.value">{{option.name}}</label>
+                    <input v-model="selectedOptions" v-bind:id="option.value" v-bind:value="option.value" type="checkbox"><br>
+                </div>
+            `
+        });
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                options: [
+                    {name: 'Option 1', value: 'Option 1 Value'},
+                    {name: 'Option 2', value: 'Option 2 Value'},
+                    {name: 'Option 3', value: 'Option 3 Value'}
+                ],
+                selectedOptions: []
+            },
+            methods: {
+                submit(){
+                    console.log(this.selectedOptions)
+                }
+            }
+        });
+    </script>
+</body>
+</html>
