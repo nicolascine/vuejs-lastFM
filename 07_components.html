@@ -9,7 +9,7 @@
         <form @submit.prevent="submit">
         <h3>Options</h3>
             <template v-for="option in options">
-                <opt v-bind:option="option" v-bind:selected-options="selectedOptions"></opt>
+                <opt v-bind:option="option" @checked="selectOption"></opt>
             </template>
             <button type="submit">Send options</button>
         </form>
@@ -19,11 +19,16 @@
     <script type="text/javascript">
 
         Vue.component('opt', {
-            props: [ 'option', 'selectedOptions'],
+            props: [ 'option'],
+            methods: {
+                onchange(ev){
+                    this.$emit('checked', this.option.value, ev.target.checked)
+                }
+            },
             template: `
                 <div>
                     <label v-bind:for="option.value">{{option.name}}</label>
-                    <input v-model="selectedOptions" v-bind:id="option.value" v-bind:value="option.value" type="checkbox"><br>
+                    <input @change="onchange" v-bind:id="option.value" v-bind:value="option.value" type="checkbox"><br>
                 </div>
             `
         });
@@ -32,15 +37,23 @@
             el: '#app',
             data: {
                 options: [
-                    {name: 'Option 1', value: 'Option 1 Value'},
-                    {name: 'Option 2', value: 'Option 2 Value'},
-                    {name: 'Option 3', value: 'Option 3 Value'}
+                    {name: 'Option 1', value: 'Option_1_Value'},
+                    {name: 'Option 2', value: 'Option_2_Value'},
+                    {name: 'Option 3', value: 'Option_3_Value'}
                 ],
                 selectedOptions: []
             },
             methods: {
                 submit(){
                     console.log(this.selectedOptions)
+                },
+                selectOption(option, checked){
+                    if(checked){
+                        this.selectedOptions.push(option)
+                    }else{
+                        let index = this.selectedOptions.indexOf(option)
+                        this.selectedOptions.splice(index, 1)
+                    }
                 }
             }
         });
