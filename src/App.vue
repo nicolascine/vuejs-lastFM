@@ -2,26 +2,55 @@
   #app
     img(src='./assets/logo.png')
     h1 lastVueFM
+    select(v-model="selectedCountry")
+      option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
+    loader(v-show="loading")
     ul
-      li(v-for="artist in artists") {{ artist.name }}
+      artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
 </template>
 
 <script>
+import Artist from './components/Artist.vue'
+import Loader from './components/Loader.vue'
 import getArtists from './api'
 
 export default {
   name: 'app',
   data () {
     return {
-      artists: []
+      artists: [],
+      countries: [
+        { name: 'Argentina', value: 'argentina' },
+        { name: 'Chile', value: 'chile' },
+        { name: 'Colombia', value: 'colombia' }
+      ],
+      selectedCountry: 'argentina',
+      loading: true
+    }
+  },
+  components: {
+    Artist,
+    Loader
+  },
+  methods: {
+    refreshArtists(){
+      const _this = this
+      _this.loading = true
+      _this.artists = []
+      getArtists(this.selectedCountry)
+        .then(function(artists) {
+          _this.artists = artists
+          _this.loading = false
+        })
     }
   },
   mounted: function() {
-    const _this = this
-    getArtists()
-      .then(function(artists){
-        _this.artists = artists
-      })
+    this.refreshArtists()
+  },
+  watch: {
+    selectedCountry: function() {
+      this.refreshArtists()
+    }
   }
 }
 </script>
@@ -34,19 +63,5 @@ export default {
     text-align center
     color #2c3e50
     margin-top 60px
-
-  h1, h2
-    font-weight normal
-
-  ul
-    list-style-type none
-    padding 0
-
-  li
-    display inline-block
-    margin 0 10px
-
-  a
-    color yellow
 
 </style>
