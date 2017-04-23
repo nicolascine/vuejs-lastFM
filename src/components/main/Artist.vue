@@ -1,7 +1,7 @@
 <template lang="pug">
-    .card
-        img.card-img-top.img-fluid(:src="artist.image[2]['#text']")
-        .card-block
+    .artist__card
+        img.img-responsive(:src="artist.image[2]['#text']")
+        .artist__description
             h3.band__name: a(:href="artist.url" target="_blank") {{ artist.name }}
 </template>
 
@@ -16,6 +16,13 @@ export default {
     a
         color #ff7f38
         text-decoration none
-    .band__name 
+    .artist__card 
+        display inline-block
+        padding-left 15px
+        margin-bottom 20px
+    .artist__description
+        text-align left
+        padding 10px
+    .band__name
         font-size 0.9em
 </style>

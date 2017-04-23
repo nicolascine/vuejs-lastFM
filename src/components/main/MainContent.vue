@@ -4,7 +4,8 @@
       select(v-model="selectedCountry")
         option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
       loader(v-show="loading")
-      artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
+      .main__content
+        artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
 </template>
 
 <script>
@@ -54,5 +55,6 @@ export default {
 </script>
 
 <style lang="stylus">
-
+  .main__content
+    width 100%
 </style>
