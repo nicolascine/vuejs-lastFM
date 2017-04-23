@@ -1,18 +1,24 @@
 <template lang="pug">
-  #app
-    img(src='./assets/logo.png')
-    h1 lastVueFM
-    select(v-model="selectedCountry")
-      option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
-    loader(v-show="loading")
-    ul
-      artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
+  .row
+    left-sidebar
+    .col-md-8
+      h1 lastVueFM
+      select(v-model="selectedCountry")
+        option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
+      loader(v-show="loading")
+      ul
+        artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
+    right-sidebar
 </template>
 
 <script>
 import Artist from './components/Artist.vue'
 import Loader from './components/Loader.vue'
 import getArtists from './api'
+
+//Layout
+import LeftSidebar from './components/LeftSidebar.vue'
+import RightSidebar from './components/RightSidebar.vue'
 
 export default {
   name: 'app',
@@ -29,11 +35,13 @@ export default {
     }
   },
   components: {
+    LeftSidebar,
+    RightSidebar,
     Artist,
     Loader
   },
   methods: {
-    refreshArtists(){
+    refreshArtists() {
       const _this = this
       _this.loading = true
       _this.artists = []
@@ -44,11 +52,11 @@ export default {
         })
     }
   },
-  mounted: function() {
+  mounted() {
     this.refreshArtists()
   },
   watch: {
-    selectedCountry: function() {
+    selectedCountry() {
       this.refreshArtists()
     }
   }
