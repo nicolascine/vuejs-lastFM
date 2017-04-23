@@ -23,12 +23,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-    a
-        color #222222
-        text-decoration none
-        font-family 'Open Sans', sans-serif
-        font-weight 400
+<style lang="stylus">
     .artist__card 
         display inline-block
         padding-left 15px
@@ -58,4 +53,9 @@ export default {
         padding 10px
     .band__name
         font-size 0.9em
+        a
+            font-family 'Open Sans', sans-serif
+            font-weight 400
+            color #222222
+            text-decoration none
 </style>
