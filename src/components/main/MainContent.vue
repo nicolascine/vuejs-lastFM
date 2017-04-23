@@ -1,7 +1,7 @@
 <template lang="pug">
-    .col-md-8
+    .col-md-6
       h1 lastVueFM
-      select(v-model="selectedCountry")
+      select.custom-select(v-model="selectedCountry")
         option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
       loader(v-show="loading")
       .main__content
@@ -11,7 +11,7 @@
 <script>
 import Artist from './Artist.vue'
 import Loader from './Loader.vue'
-import getArtists from '../../api'
+import { getArtists } from '../../api'
 
 export default {
   name: 'mainContent',
@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style lang="stylus">
+  .left__sidebar, .right__sidebar
+    font-family 'Open Sans', sans-serif
+    font-size 13px
   .main__content
     width 100%
 </style>

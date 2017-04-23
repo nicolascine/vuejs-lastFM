@@ -1,5 +1,5 @@
 <template lang="pug">
-    .col-md-2.right__sidebar
+    .col-md-4.right__sidebar
         | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam laborum rerum error eligendi alias, accusamus placeat. Exercitationem distinctio molestias enim recusandae perferendis et sapiente repudiandae? Perspiciatis eaque aperiam eum praesentium.
 </template>
 
