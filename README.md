@@ -1,4 +1,4 @@
-# tutorial
+# vue-lastFM
 
 > A Vue.js project
 
